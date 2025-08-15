@@ -2,11 +2,46 @@
 /* Classes utilitaires pour remplacer les styles inline */
 
 /* ==========================================================================
-   Spacing Utilities
+   Section Template (centralisé)
+   - Les sections n'ont pas de padding/margin par défaut.
+   - Utiliser .section--padded pour contrôler l'espacement vertical.
+   - On neutralise les marges du premier et du dernier enfant pour éviter
+     des écarts verticaux non désirés entre sections.
+   ========================================================================== */
+
+.section {
+    margin: 0;
+    padding: 0;
+    display: block; /* Flux naturel, pas de flex */
+}
+
+/* Reset des marges du contenu aux bornes de la section */
+.section > .container > :first-child,
+.section > :first-child {
+    margin-top: 0 !important; /* Force le reset des marges supérieures */
+}
+
+.section > .container > :last-child,
+.section > :last-child {
+    margin-bottom: 0 !important; /* Force le reset des marges inférieures */
+}
+
+/* Contrôle strict de l'espacement interne des sections */
+.section .section-title {
+    margin: 0 0 var(--spacing-4) 0 !important; /* Marge réduite et forcée */
+}
+
+.section .mt-6 {
+    margin-top: var(--spacing-3) !important; /* Réduire les marges trop importantes */
+}
+
+/* ==========================================================================
+    Spacing Utilities
    ========================================================================== */
 
 .section--padded {
-    padding: var(--spacing-16) 0;
+     /* Desktop par défaut: 48px haut/bas pour un rythme plus compact */
+     padding: var(--spacing-12) 0;
 }
 
 .section--padded-small {

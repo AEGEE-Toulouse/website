@@ -137,26 +137,10 @@ ul, ol {
 .text-white { color: var(--white); }
 
 /* Classes utilitaires pour l'espacement */
-.mb-1 { margin-bottom: var(--spacing-1); }
-.mb-2 { margin-bottom: var(--spacing-2); }
-.mb-3 { margin-bottom: var(--spacing-3); }
-.mb-4 { margin-bottom: var(--spacing-4); }
-.mb-6 { margin-bottom: var(--spacing-6); }
-.mb-8 { margin-bottom: var(--spacing-8); }
+/* Classes utilitaires déplacées vers utilities.css pour éviter les conflits */
 
-.mt-1 { margin-top: var(--spacing-1); }
-.mt-2 { margin-top: var(--spacing-2); }
-.mt-3 { margin-top: var(--spacing-3); }
-.mt-4 { margin-top: var(--spacing-4); }
-.mt-6 { margin-top: var(--spacing-6); }
-.mt-8 { margin-top: var(--spacing-8); }
-
-/* Sections de base */
-.section {
-    /* Padding géré par .section--padded dans utilities.css */
-    /* Min-height supprimé pour éviter les sections trop grandes */
-    display: block; /* Changé de flex à block pour un comportement normal */
-}
+/* Sections de base - styles déplacés vers utilities.css */
+/* La règle .section est maintenant définie dans utilities.css */
 
 /* Hero styles maintenant dans hero.css uniquement */
 
