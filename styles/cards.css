@@ -144,7 +144,7 @@
 }
 
 .card--partner .card__description {
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-sm);
     margin: 0;
     padding: 0;
 }
@@ -177,6 +177,11 @@
 
 .text-content p:last-of-type {
     margin-bottom: var(--spacing-6);
+}
+
+/* Spécifiquement pour corriger la couleur du texte des partenaires */
+.text-content.text-center {
+    color: var(--gray-600);
 }
 
 /* ==========================================================================

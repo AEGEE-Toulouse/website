@@ -43,8 +43,8 @@
 }
 
 .logo__icon {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
 }
 
 .logo__text {
@@ -96,6 +96,11 @@
 
 .footer-brand {
     margin-bottom: var(--spacing-4);
+    align-items: center;
+}
+
+.footer-logo {
+    justify-content: center;
 }
 
 .footer-logo__text {
@@ -157,8 +162,8 @@
     
     /* Logo plus grand */
     .logo__icon {
-        width: 36px;
-        height: 36px;
+        width: 44px;
+        height: 44px;
     }
     
     .logo__text {
@@ -201,8 +206,8 @@
     
     /* Logo encore plus grand */
     .logo__icon {
-        width: 40px;
-        height: 40px;
+        width: 48px;
+        height: 48px;
     }
     
     .logo__text {
@@ -222,7 +227,7 @@
     
     /* Sections avec plus d'espacement vertical */
     .section {
-        padding: var(--spacing-24) 0;
+        padding: var(--spacing-18) 0;
     }
     
     .hero h1 {
@@ -345,8 +350,8 @@
     
     /* Logo à taille maximale */
     .logo__icon {
-        width: 44px;
-        height: 44px;
+        width: 52px;
+        height: 52px;
     }
     
     .logo__text {
