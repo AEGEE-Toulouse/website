@@ -153,10 +153,9 @@ ul, ol {
 
 /* Sections de base */
 .section {
-    padding: var(--spacing-16) 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+    /* Padding géré par .section--padded dans utilities.css */
+    /* Min-height supprimé pour éviter les sections trop grandes */
+    display: block; /* Changé de flex à block pour un comportement normal */
 }
 
 /* Hero styles maintenant dans hero.css uniquement */
