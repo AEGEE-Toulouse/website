@@ -85,16 +85,16 @@
    Responsive Grid System
    ========================================================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
     .grid {
-        padding: var(--spacing-4) 0;
+        padding: var(--spacing-3) 0;
         gap: var(--spacing-4);
     }
     
     .grid--text-media,
     .grid--text-media.grid--reverse {
         grid-template-columns: 1fr;
-        gap: var(--spacing-6);
+        gap: var(--spacing-4);
         text-align: center;
     }
     

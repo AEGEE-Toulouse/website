@@ -21,7 +21,8 @@
 .header-main {
     background: var(--white);
     padding: var(--spacing-4) 0;
-    border-bottom: 1px solid var(--gray-200);
+    border-bottom: 3px solid var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 85, 164, 0.1);
 }
 
 .header-main__content {
@@ -154,6 +155,11 @@
 
 .menu-toggle:hover {
     background: var(--gray-100);
+    transform: scale(1.05);
+}
+
+.menu-toggle:hover .hamburger__line {
+    background: var(--dark-color);
 }
 
 .hamburger {
@@ -168,7 +174,7 @@
 .hamburger__line {
     width: 100%;
     height: 2px;
-    background: var(--gray-700);
+    background: var(--primary-color);
     border-radius: var(--radius-full);
     transition: all var(--transition-base);
     transform-origin: center;
