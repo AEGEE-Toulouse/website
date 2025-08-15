@@ -1,0 +1,153 @@
+/* AEGEE Toulouse - Layout CSS */
+/* Système de grille et utilitaires de mise en page centralisés */
+
+/* ==========================================================================
+   Grid System Centralisé
+   ========================================================================== */
+
+.grid {
+    display: grid;
+    gap: var(--spacing-6);
+    padding: var(--spacing-6) 0;
+}
+
+.grid--auto {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid--events {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.grid--partners {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Grille texte/média 60/40 */
+.grid--text-media {
+    grid-template-columns: 60% 40%;
+    gap: 0;
+    align-items: center;
+}
+
+.grid--text-media.grid--reverse {
+    grid-template-columns: 40% 60%;
+}
+
+.grid--text-media .text-content {
+    padding-right: var(--spacing-8);
+}
+
+.grid--text-media.grid--reverse .text-content {
+    padding-right: 0;
+    padding-left: var(--spacing-8);
+}
+
+/* ==========================================================================
+   Layout Utilities
+   ========================================================================== */
+
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.min-h-screen {
+    min-height: 100vh;
+}
+
+.min-h-50 {
+    min-height: 50vh;
+}
+
+/* ==========================================================================
+   Container System
+   ========================================================================== */
+
+.container {
+    width: 100%;
+    max-width: var(--container-xl);
+    margin: 0 auto;
+    padding: 0 var(--spacing-8);
+}
+
+/* ==========================================================================
+   Responsive Grid System
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .grid {
+        padding: var(--spacing-4) 0;
+        gap: var(--spacing-4);
+    }
+    
+    .grid--text-media,
+    .grid--text-media.grid--reverse {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-6);
+        text-align: center;
+    }
+    
+    /* Masquer l'image/media content sur mobile pour éviter les problèmes de disposition */
+    .grid--text-media .media-content,
+    .grid--text-media.grid--reverse .media-content {
+        display: none;
+    }
+    
+    .grid--text-media .text-content,
+    .grid--text-media.grid--reverse .text-content {
+        padding-right: 0;
+        padding-left: 0;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 var(--spacing-6);
+    }
+}
+
+@media (min-width: 576px) {
+    .container {
+        padding: 0 var(--spacing-8);
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: var(--container-md);
+        padding: 0 var(--spacing-10);
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: var(--container-lg);
+        padding: 0 var(--spacing-12);
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: var(--container-xl);
+        padding: 0 var(--spacing-14);
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: var(--container-2xl);
+        padding: 0 var(--spacing-14);
+    }
+}
