@@ -36,16 +36,16 @@
 
 /* Variantes de sections avec espacement */
 .section--padded {
-     /* Desktop par défaut: 36px haut/bas pour un rythme plus compact */
-     padding: var(--spacing-9) 0;
+     /* Desktop par défaut: 48px haut/bas pour un rythme équilibré */
+     padding: var(--spacing-12) 0;
 }
 
 .section--padded-small {
-    padding: var(--spacing-9) 0;
+    padding: var(--spacing-10) 0;
 }
 
 .section--padded-large {
-    padding: var(--spacing-16) 0;
+    padding: var(--spacing-20) 0;
 }
 
     /* ==========================================================================
