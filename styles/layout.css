@@ -36,16 +36,16 @@
 
 /* Variantes de sections avec espacement */
 .section--padded {
-     /* Desktop par défaut: 48px haut/bas pour un rythme plus compact */
-     padding: var(--spacing-12) 0;
+     /* Desktop par défaut: 36px haut/bas pour un rythme plus compact */
+     padding: var(--spacing-9) 0;
 }
 
 .section--padded-small {
-    padding: var(--spacing-12) 0;
+    padding: var(--spacing-9) 0;
 }
 
 .section--padded-large {
-    padding: var(--spacing-20) 0;
+    padding: var(--spacing-16) 0;
 }
 
     /* ==========================================================================
@@ -160,15 +160,15 @@
 
     /* Section responsive dans layout */
     .section--padded {
-        padding: var(--spacing-8) 0; /* Mobile: 32px haut/bas */
-    }
-
-    .section--padded-small {
         padding: var(--spacing-6) 0; /* Mobile: 24px haut/bas */
     }
 
+    .section--padded-small {
+        padding: var(--spacing-5) 0; /* Mobile: 20px haut/bas */
+    }
+
     .section--padded-large {
-        padding: var(--spacing-12) 0; /* Mobile: 48px haut/bas */
+        padding: var(--spacing-9) 0; /* Mobile: 36px haut/bas */
     }
 }
 
@@ -213,15 +213,15 @@
 
     /* Section responsive grandes tailles */
     .section--padded {
-        padding: var(--spacing-16) 0; /* Desktop XL: 64px haut/bas */
+        padding: var(--spacing-12) 0; /* Desktop XL: 48px haut/bas */
     }
 
     .section--padded-small {
-        padding: var(--spacing-14) 0; /* Desktop XL: 56px haut/bas */
+        padding: var(--spacing-10) 0; /* Desktop XL: 40px haut/bas */
     }
 
     .section--padded-large {
-        padding: var(--spacing-24) 0; /* Desktop XL: 96px haut/bas */
+        padding: var(--spacing-18) 0; /* Desktop XL: 72px haut/bas */
     }
 }
 
