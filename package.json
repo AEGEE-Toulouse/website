@@ -1,0 +1,26 @@
+{
+  "name": "aegee-toulouse-website",
+  "version": "1.0.0",
+  "description": "AEGEE Toulouse - Site web statique avec architecture CSS modulaire",
+  "private": true,
+  "scripts": {
+    "build": "postcss styles/index.css -o site.css",
+    "watch": "postcss styles/index.css -o site.css --watch",
+    "build:verbose": "postcss styles/index.css -o site.css --verbose"
+  },
+  "devDependencies": {
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
+    "postcss-import": "^15.1.0",
+    "cssnano": "^6.0.1"
+  },
+  "keywords": [
+    "aegee",
+    "toulouse",
+    "css",
+    "postcss",
+    "cascade-layers"
+  ],
+  "author": "AEGEE Toulouse",
+  "license": "MIT"
+}

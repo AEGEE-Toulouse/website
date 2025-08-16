@@ -1,0 +1,271 @@
+/* AEGEE Toulouse - Footer Component */
+@layer tokens, base, layout, components, utilities, overrides;
+
+@layer components {
+    /* ==========================================================================
+       Footer Principal
+       ========================================================================== */
+    .site-footer {
+        background: linear-gradient(135deg, var(--gray-900) 0%, var(--dark-color) 100%);
+        color: var(--gray-100);
+        padding-top: var(--spacing-20);
+        padding-bottom: var(--spacing-8);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: var(--spacing-8);
+        margin-bottom: var(--spacing-12);
+    }
+
+    /* Brand footer */
+    .footer-brand {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-4);
+    }
+
+    .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+    }
+
+    .site-footer .footer-logo__icon {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+    }
+
+    .site-footer .footer-logo__text {
+        font-family: var(--font-family-heading);
+        font-weight: var(--font-weight-bold);
+        font-size: var(--font-size-xl);
+        color: var(--white);
+        line-height: var(--line-height-tight);
+    }
+
+    .site-footer .footer-logo__text small {
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-normal);
+        opacity: 0.8;
+    }
+
+    .site-footer .footer-tagline {
+        color: var(--gray-300);
+        line-height: var(--line-height-relaxed);
+        font-size: var(--font-size-sm);
+    }
+
+    /* Navigation footer */
+    .site-footer .footer-title {
+        color: var(--white);
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-semibold);
+        margin-bottom: var(--spacing-4);
+    }
+
+    .site-footer .footer-nav__list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-2);
+    }
+
+    .site-footer .footer-nav__link {
+        color: var(--gray-300);
+        font-size: var(--font-size-sm);
+        padding: var(--spacing-1) 0;
+        transition: all var(--transition-fast);
+    }
+
+    .site-footer .footer-nav__link:hover {
+        color: var(--accent-color);
+        transform: translateX(4px);
+    }
+
+    /* Contact footer */
+    .footer-contact {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-4);
+    }
+
+    .footer-address {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-3);
+        font-style: normal;
+    }
+
+    .site-footer .footer-contact__link,
+    .site-footer .footer-contact__item {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-2);
+        color: var(--gray-300);
+        font-size: var(--font-size-sm);
+        transition: color var(--transition-fast);
+    }
+
+    .site-footer .footer-contact__link:hover {
+        color: var(--accent-color);
+    }
+
+    .site-footer .footer-contact__link .icon,
+    .site-footer .footer-contact__item .icon {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+        flex-shrink: 0;
+    }
+
+    /* Réseaux sociaux footer */
+    .footer-social {
+        margin-top: var(--spacing-2);
+    }
+
+    .site-footer .footer-social__title {
+        color: var(--white);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-medium);
+        margin-bottom: var(--spacing-3);
+    }
+
+    .site-footer .footer-social__links {
+        display: flex;
+        gap: var(--spacing-3);
+    }
+
+    .site-footer .footer-social__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: var(--radius-full);
+        color: var(--gray-400);
+        background: rgba(255, 255, 255, 0.1);
+        transition: all var(--transition-fast);
+    }
+
+    .site-footer .footer-social__link:hover {
+        color: var(--white);
+        background: var(--primary-color);
+        transform: scale(1.1);
+    }
+
+    .site-footer .footer-social__link .icon {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+    }
+
+    /* Newsletter link */
+    .site-footer .footer-newsletter-link {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-2);
+        color: var(--accent-color);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-medium);
+        padding: var(--spacing-2) var(--spacing-4);
+        border: 1px solid var(--accent-color);
+        border-radius: var(--radius-lg);
+        transition: all var(--transition-fast);
+        margin-top: var(--spacing-4);
+    }
+
+    .site-footer .footer-newsletter-link:hover {
+        background: var(--accent-color);
+        color: var(--dark-color);
+    }
+
+    /* Barre du bas */
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: var(--spacing-6);
+    }
+
+    .footer-bottom__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--spacing-4);
+    }
+
+    .site-footer .footer-copyright {
+        color: var(--gray-400);
+        font-size: var(--font-size-xs);
+    }
+
+    .site-footer .footer-legal__link {
+        color: var(--gray-400);
+        transition: color var(--transition-fast);
+    }
+
+    .site-footer .footer-legal__link:hover {
+        color: var(--accent-color);
+    }
+
+    /* Bouton retour en haut */
+    .site-footer .back-to-top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: var(--radius-full);
+        background: var(--primary-color);
+        color: var(--white);
+        transition: all var(--transition-fast);
+    }
+
+    .site-footer .back-to-top:hover {
+        background: var(--accent-color);
+        color: var(--dark-color);
+        transform: translateY(-2px);
+    }
+
+    .site-footer .back-to-top .icon {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+        .footer-inner {
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-6);
+        }
+
+        .footer-contact {
+            grid-column: 1 / -1;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .site-footer {
+            padding-top: var(--spacing-16);
+            padding-bottom: var(--spacing-6);
+        }
+
+        .footer-inner {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-8);
+            margin-bottom: var(--spacing-8);
+        }
+
+        .footer-bottom__content {
+            flex-direction: column;
+            text-align: center;
+            gap: var(--spacing-3);
+        }
+
+        .site-footer .footer-social__links {
+            justify-content: center;
+        }
+    }
+}

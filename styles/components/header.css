@@ -1,0 +1,426 @@
+/* AEGEE Toulouse - Header Component */
+@layer tokens, base, layout, components, utilities, overrides;
+
+@layer components {
+    /* ==========================================================================
+       Header Principal & Mobile First
+       ========================================================================== */
+    
+    /* Responsive - Mobile First */
+    .nav {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: var(--z-sticky);
+        background: var(--white);
+        transition: box-shadow var(--transition-fast);
+    }
+
+    .header.scrolled {
+        box-shadow: var(--shadow-md);
+    }
+
+    .header-main {
+        background: var(--white);
+        padding: var(--spacing-4) 0;
+        border-bottom: 3px solid var(--primary-color);
+        box-shadow: 0 2px 4px rgba(0, 85, 164, 0.1);
+    }
+
+    .header-main__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--spacing-6);
+    }
+
+    /* Logo */
+    .header .logo a {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-4);
+        color: var(--primary-color);
+        font-family: var(--font-family-heading);
+        font-weight: var(--font-weight-bold);
+        transition: all var(--transition-fast);
+    }
+
+    .header .logo__icon {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+    }
+
+    .header .logo__text {
+        font-size: var(--font-size-xl);
+        line-height: var(--line-height-tight);
+    }
+
+    .header .logo__text small {
+        display: block;
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-normal);
+        opacity: 0.8;
+    }
+
+    /* Navigation principale */
+    .header .nav {
+        display: flex;
+    }
+
+    .header .nav__list {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-8);
+    }
+
+    .header .nav__link {
+        color: var(--gray-700);
+        font-weight: var(--font-weight-medium);
+        font-size: var(--font-size-base);
+        padding: var(--spacing-2) var(--spacing-4);
+        border-radius: var(--radius-base);
+        transition: all var(--transition-fast);
+        position: relative;
+    }
+
+    .header .nav__link:hover {
+        color: var(--primary-color);
+        background: rgba(255, 215, 0, 0.15); /* Fond jaune léger au hover */
+    }
+
+    .header .nav__link.active {
+        color: var(--primary-color);
+        font-weight: var(--font-weight-semibold);
+        background: rgba(255, 215, 0, 0.1); /* Fond jaune très léger pour l'état actif */
+    }
+
+    .header .nav__link.active::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 2px;
+        background: var(--accent-color); /* Utilise le jaune AEGEE */
+        border-radius: var(--radius-full);
+    }
+
+    /* Actions du header */
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-4);
+    }
+
+    /* Sélecteur de langue */
+    .header .language-selector {
+        display: flex;
+        gap: var(--spacing-1);
+        background: var(--gray-100);
+        padding: var(--spacing-1);
+        border-radius: var(--radius-lg);
+    }
+
+    .header .language-btn {
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-base);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-medium);
+        color: var(--gray-600);
+        transition: all var(--transition-fast);
+    }
+
+    .header .language-btn:hover {
+        color: var(--primary-color);
+    }
+
+    .header .language-btn.active {
+        color: var(--white);
+        background: var(--primary-color);
+        box-shadow: var(--shadow-sm);
+    }
+
+    /* Menu burger */
+    .header .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 48px;
+        height: 48px;
+        border-radius: var(--radius-lg);
+        background: transparent;
+        transition: background var(--transition-fast);
+    }
+
+    .header .menu-toggle:hover {
+        background: var(--gray-100);
+        transform: scale(1.05);
+    }
+
+    .header .menu-toggle:hover .hamburger__line {
+        background: var(--dark-color);
+    }
+
+    .header .hamburger {
+        width: 24px;
+        height: 18px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .header .hamburger__line {
+        width: 100%;
+        height: 2px;
+        background: var(--primary-color);
+        border-radius: var(--radius-full);
+        transition: all var(--transition-base);
+        transform-origin: center;
+    }
+
+    /* Animation du menu burger */
+    .header .menu-toggle[aria-expanded="true"] .hamburger__line:first-child {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .header .menu-toggle[aria-expanded="true"] .hamburger__line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .header .menu-toggle[aria-expanded="true"] .hamburger__line:last-child {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* ==========================================================================
+       Menu Mobile Overlay
+       ========================================================================== */
+
+    .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: var(--z-modal);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(6px);
+    }
+
+    .mobile-menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .mobile-menu {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 320px;
+        max-width: 85vw;
+        height: 100vh;
+        background: linear-gradient(135deg, var(--white) 0%, #f8fafc 100%);
+        border-left: 4px solid var(--primary-color);
+        box-shadow: -8px 0 25px rgba(0, 0, 0, 0.15);
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto;
+    }
+
+    .mobile-menu-overlay.active .mobile-menu {
+        transform: translateX(0);
+    }
+
+    .mobile-nav {
+        padding: var(--spacing-8) var(--spacing-5);
+    }
+
+    .mobile-nav__list {
+        margin-bottom: var(--spacing-8);
+    }
+
+    .mobile-nav__item {
+        margin-bottom: var(--spacing-2);
+    }
+
+    .mobile-nav__link {
+        display: block;
+        padding: var(--spacing-4) var(--spacing-3);
+        color: var(--gray-700);
+        font-weight: var(--font-weight-medium);
+        font-size: var(--font-size-lg);
+        border-radius: var(--radius-lg);
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        margin: var(--spacing-1) 0;
+    }
+
+    .mobile-nav__link:hover {
+        color: var(--primary-color);
+        background: linear-gradient(135deg, rgba(0, 85, 164, 0.08) 0%, rgba(0, 85, 164, 0.12) 100%);
+        transform: translateX(6px);
+        box-shadow: 0 2px 8px rgba(0, 85, 164, 0.15);
+    }
+
+    .mobile-nav__link:active {
+        transform: translateX(6px) scale(0.98);
+    }
+
+    /* Actions du menu mobile */
+    .mobile-menu__actions {
+        border-top: 1px solid rgba(0, 85, 164, 0.1);
+        padding: var(--spacing-6) var(--spacing-5);
+        margin-top: auto;
+        background: rgba(248, 250, 252, 0.5);
+    }
+
+    .mobile-language-selector {
+        display: flex;
+        gap: var(--spacing-2);
+        margin-bottom: var(--spacing-6);
+    }
+
+    .mobile-language-btn {
+        flex: 1;
+        padding: var(--spacing-3) var(--spacing-4);
+        border-radius: var(--radius-lg);
+        font-weight: var(--font-weight-medium);
+        color: var(--gray-600);
+        background: var(--gray-100);
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mobile-language-btn:hover {
+        color: var(--primary-color);
+        background: rgba(0, 85, 164, 0.1);
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-language-btn.active {
+        color: var(--white);
+        background: var(--primary-color);
+        box-shadow: 0 2px 8px rgba(0, 85, 164, 0.3);
+    }
+
+    .mobile-social {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-4);
+    }
+
+    .mobile-social__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: var(--radius-full);
+        color: var(--gray-600);
+        background: var(--gray-100);
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mobile-social__link:hover {
+        color: var(--white);
+        background: var(--primary-color);
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 4px 12px rgba(0, 85, 164, 0.3);
+    }
+
+    .mobile-social__link .icon {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+    }
+
+    /* Prévention du scroll quand le menu mobile est ouvert */
+    body.menu-open {
+        overflow: hidden;
+        height: 100vh;
+    }
+
+    /* États de focus pour l'accessibilité */
+    .header .nav__link:focus,
+    .header .language-btn:focus,
+    .header .menu-toggle:focus,
+    .header .logo a:focus,
+    .mobile-nav__link:focus,
+    .mobile-language-btn:focus,
+    .mobile-social__link:focus {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+
+    /* États hover avec micro-animations */
+    .header .logo a:hover,
+    .header .nav__link:hover,
+    .header .language-btn:hover {
+        transform: scale(1.02);
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+        .header .nav {
+            display: none;
+        }
+
+        .header .language-selector {
+            display: none;
+        }
+
+        .header .menu-toggle {
+            display: flex;
+        }
+
+        .header .logo__text small {
+            display: none;
+        }
+
+        .header .logo__icon {
+            width: 36px;
+            height: 36px;
+        }
+
+        .header .logo__text {
+            font-size: var(--font-size-lg);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header-main {
+            padding: var(--spacing-3) 0;
+        }
+
+        .header-main__content {
+            gap: var(--spacing-4);
+        }
+    }
+
+    /* Responsive - Desktop */
+    @media (min-width: 992px) {
+        /* Navigation desktop - override dans overrides.css */
+        .nav {
+            display: flex;
+        }
+        
+        .menu-toggle {
+            display: none;
+        }
+    }
+}

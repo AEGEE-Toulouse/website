@@ -1,720 +1,203 @@
-/* AEGEE Toulouse - Responsive CSS */
-/* Media queries mobile-first */
+/* AEGEE Toulouse - Responsive Utilities */
+@layer tokens, base, layout, components, utilities, overrides;
 
-/* ==========================================================================
-   Mobile First - Base (0px and up)
-   Styles de base définis dans main.css et components.css
-   ========================================================================== */
+@layer utilities {
+    /* ==========================================================================
+       Responsive Display Utilities (100% media queries uniquement)
+       ========================================================================== */
 
-/* Mobile par défaut - masquer la navigation desktop */
-.nav {
-    display: none;
-}
+    /* ==========================================================================
+       Large devices (992px and up)
+       ========================================================================== */
 
-.menu-toggle {
-    display: flex;
-}
+    @media (min-width: 992px) {
+    }
 
+    /* ==========================================================================
+       Responsive pour les hauteurs d'écran
+       ========================================================================== */
 
-/* Masquer la top bar sur mobile */
-.top-bar {
-    display: none;
-}
+    /* Écrans courts - réduire les espacements verticaux */
+    @media (max-height: 600px) {
+        .top-bar {
+            padding: var(--spacing-1) 0;
+        }
+        
+        .header-main {
+            padding: var(--spacing-3) 0;
+        }
+        
+        .hero {
+            min-height: 80vh;
+        }
+    }
 
-/* Top bar responsive - passage en colonne sur mobile */
-.top-bar__content {
-    flex-direction: column;
-    gap: var(--spacing-3);
-    text-align: center;
-}
+    /* Écrans très courts - layout ultra compact */
+    @media (max-height: 480px) {
+        .breadcrumb-mobile {
+            display: none;
+        }
+        
+        .top-bar {
+            display: none;
+        }
+        
+        .header-main {
+            padding: var(--spacing-2) 0;
+        }
+        
+        .hero {
+            min-height: 70vh;
+        }
+        
+        .hero h1 {
+            font-size: var(--font-size-3xl);
+        }
+        
+        .hero p {
+            font-size: var(--font-size-lg);
+        }
+    }
 
-.top-bar__info {
-    flex-direction: column;
-    gap: var(--spacing-3);
-}
+    /* ==========================================================================
+       Responsive pour l'accessibilité
+       ========================================================================== */
 
-.contact-item {
-    justify-content: center;
-}
+    /* Préférence pour un contraste élevé */
+    @media (prefers-contrast: high) {
+        .nav__link {
+            border: 1px solid transparent;
+        }
+        
+        .nav__link:hover,
+        .nav__link.active {
+            border-color: var(--primary-color);
+        }
+        
+        .social-link,
+        .language-btn {
+            border: 1px solid var(--gray-300);
+        }
+        
+        .mobile-nav__link {
+            border: 1px solid transparent;
+            border-radius: var(--radius-base);
+        }
+        
+        .mobile-nav__link:hover {
+            border-color: var(--primary-color);
+        }
+    }
 
-/* Header principal mobile */
-.header-main__content {
-    gap: var(--spacing-4);
-}
+    /* ==========================================================================
+       Print styles
+       ========================================================================== */
 
-.logo__icon {
-    width: 40px;
-    height: 40px;
-}
+    @media print {
+        .header {
+            position: static;
+            box-shadow: none;
+        }
+        
+        .top-bar,
+        .breadcrumb-mobile,
+        .menu-toggle,
+        .mobile-menu-overlay {
+            display: none;
+        }
+        
+        .header-main {
+            border-bottom: 2px solid var(--gray-900);
+            padding: var(--spacing-4) 0;
+        }
+        
+        .nav__list {
+            gap: var(--spacing-4);
+        }
+        
+        .nav__link {
+            color: var(--gray-900);
+            text-decoration: underline;
+        }
+        
+        .language-selector {
+            display: none;
+        }
+    }
 
-.logo__text {
-    font-size: var(--font-size-lg);
-}
+    /* ==========================================================================
+       Responsive pour les orientations
+       ========================================================================== */
 
-/* Container mobile */
-.container {
-    padding: 0 var(--spacing-6);
-}
+    /* Mode paysage sur mobile */
+    @media (orientation: landscape) and (max-height: 480px) {
+        .top-bar {
+            display: none;
+        }
+        
+        .breadcrumb-mobile {
+            display: none;
+        }
+        
+        .header-main {
+            padding: var(--spacing-2) 0;
+        }
+        
+        .hero {
+            min-height: 90vh;
+        }
+    }
 
-/* Footer mobile */
-.footer-inner {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-4);
-    text-align: center;
-}
+    /* ==========================================================================
+       Responsive pour les appareils tactiles
+       ========================================================================== */
 
-.footer-nav__list {
-    align-items: center;
-}
+    /* Augmenter les zones de touch sur mobile */
+    @media (pointer: coarse) {
+        .nav__link,
+        .social-link,
+        .contact-item,
+        .language-btn,
+        .menu-toggle {
+            min-height: 44px;
+            min-width: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .mobile-nav__link {
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .mobile-social__link,
+        .mobile-language-btn {
+            min-height: 48px;
+            min-width: 48px;
+        }
+    }
 
-.footer-social__links {
-    justify-content: center;
-    gap: var(--spacing-2);
-}
-
-.footer-social__link {
-    width: 36px;
-    height: 36px;
-}
-
-.footer-bottom__content {
-    flex-direction: column;
-    text-align: center;
-    gap: var(--spacing-2);
-}
-
-.footer-copyright {
-    font-size: var(--font-size-xs);
-    line-height: 1.4;
-}
-
-/* Simplifier le footer sur mobile */
-.site-footer {
-    padding-top: var(--spacing-8);
-    padding-bottom: var(--spacing-6);
-}
-
-.footer-brand {
-    margin-bottom: var(--spacing-4);
-    align-items: center;
-}
-
-.footer-logo {
-    justify-content: center;
-}
-
-.footer-logo__text {
-    font-size: var(--font-size-lg);
-}
-
-.footer-tagline {
-    font-size: var(--font-size-xs);
-    margin-bottom: var(--spacing-4);
-}
-
-.footer-title {
-    font-size: var(--font-size-base);
-    margin-bottom: var(--spacing-2);
-}
-
-.footer-nav__link {
-    font-size: var(--font-size-xs);
-    padding: var(--spacing-1);
-}
-
-.footer-contact__link,
-.footer-contact__item {
-    font-size: var(--font-size-xs);
-    gap: var(--spacing-1);
-    justify-content: center;
-    text-align: center;
-}
-
-.footer-newsletter-link {
-    font-size: var(--font-size-xs);
-    padding: var(--spacing-1) var(--spacing-2);
-    margin: 0 auto;
-}
-
-/* ==========================================================================
-   Small devices (576px and up)
-   ========================================================================== */
-
-@media (min-width: 576px) {
-    .container {
-        padding: 0 var(--spacing-8);
-    }
-    
-    /* Top bar en ligne sur small devices */
-    .top-bar__content {
-        flex-direction: row;
-        text-align: left;
-    }
-    
-    .top-bar__info {
-        flex-direction: row;
-        gap: var(--spacing-4);
-    }
-    
-    .contact-item {
-        justify-content: flex-start;
-    }
-    
-    /* Logo plus grand */
-    .logo__icon {
-        width: 44px;
-        height: 44px;
-    }
-    
-    .logo__text {
-        font-size: var(--font-size-xl);
-    }
-    
-    /* Menu mobile plus large */
-    .mobile-menu {
-        width: 360px;
-    }
-}
-
-/* ==========================================================================
-   Medium devices (768px and up)
-   ========================================================================== */
-
-@media (min-width: 768px) {
-    .container {
-        max-width: var(--container-md);
-    }
-    
-    
-    /* Top bar avec plus d'espacement */
-    .top-bar__info {
-        gap: var(--spacing-6);
-    }
-    
-    .top-bar__social {
-        gap: var(--spacing-4);
-    }
-    
-    /* Header principal avec plus d'espacement */
-    .header-main {
-        padding: var(--spacing-5) 0;
-    }
-    
-    .header-main__content {
-        gap: var(--spacing-8);
-    }
-    
-    /* Logo encore plus grand */
-    .logo__icon {
-        width: 48px;
-        height: 48px;
-    }
-    
-    .logo__text {
-        font-size: var(--font-size-2xl);
-    }
-    
-    /* Social links plus grands */
-    .social-link {
-        width: 36px;
-        height: 36px;
-    }
-    
-    .social-link .icon {
-        width: 18px;
-        height: 18px;
-    }
-    
-    /* Sections responsive - utilise les classes utilities */
-    /* Les espacements des sections sont gérés par utilities.css */
-    
-    .hero h1 {
-        font-size: var(--font-size-6xl);
-    }
-    
-    .hero p {
-        font-size: var(--font-size-2xl);
-    }
-    
-    /* Footer responsive */
-    .footer-inner {
-        grid-template-columns: 1fr 1fr;
-        gap: var(--spacing-8);
-    }
-    
-    .footer-brand {
-        grid-column: 1 / -1;
-        margin-bottom: var(--spacing-6);
-    }
-}
-
-/* ==========================================================================
-   Large devices (992px and up)
-   ========================================================================== */
-
-@media (min-width: 992px) {
-    .container {
-        max-width: var(--container-lg);
-    }
-    
-    /* Afficher la navigation desktop et masquer le menu burger */
-    .nav {
-        display: flex !important;
-    }
-    
-    .menu-toggle {
-        display: none !important;
-    }
-    
-    /* Réafficher la top bar sur desktop */
-    .top-bar {
-        display: block;
-        padding: var(--spacing-3) 0;
-    }
-    
-    .top-bar__info {
-        gap: var(--spacing-8);
-    }
-    
-    /* Header principal avec plus d'espacement */
-    .header-main {
-        padding: var(--spacing-6) 0;
-    }
-    
-    /* Navigation avec espacement compact */
-    .nav__list {
-        gap: var(--spacing-6);
-    }
-    
-    .nav__link {
-        padding: var(--spacing-1) var(--spacing-3);
-        font-size: var(--font-size-base);
-    }
-    
-    /* Language selector compact */
-    .language-btn {
-        padding: var(--spacing-1) var(--spacing-3);
-        font-size: var(--font-size-sm);
-    }
-    
-    /* Contact items avec hover plus prononcé */
-    .contact-item:hover {
-        transform: scale(1.05);
-    }
-    
-    .social-link:hover {
-        transform: scale(1.15);
-    }
-    
-    /* Footer en ligne sur large screens */
-    .footer-inner {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-    
-    .footer-brand {
-        grid-column: auto;
-        margin-bottom: 0;
-    }
-    
-    .footer-bottom__content {
-        flex-direction: row;
-    }
-}
-
-/* ==========================================================================
-   Extra large devices (1200px and up)
-   ========================================================================== */
-
-@media (min-width: 1200px) {
-    .container {
-        max-width: var(--container-xl);
-        padding: 0 var(--spacing-12);
-    }
-    
-    /* Top bar avec plus d'espacement */
-    .top-bar__content {
-        gap: var(--spacing-6);
-    }
-    
-    /* Header principal avec espacement maximum */
-    .header-main__content {
-        gap: var(--spacing-12);
-    }
-    
-    /* Navigation avec espacement moderne */
-    .nav__list {
-        gap: var(--spacing-8);
-    }
-    
-    /* Logo à taille maximale */
-    .logo__icon {
-        width: 52px;
-        height: 52px;
-    }
-    
-    .logo__text {
-        font-size: var(--font-size-3xl);
-    }
-    
-    /* Social links à taille maximale */
-    .social-link {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .social-link .icon {
-        width: 20px;
-        height: 20px;
-    }
-}
-
-/* ==========================================================================
-   2X Large devices (1400px and up)
-   ========================================================================== */
-
-@media (min-width: 1400px) {
-    .container {
-        max-width: var(--container-2xl);
-        padding: 0 var(--spacing-16);
-    }
-    
-    /* Espacement maximum pour les très grands écrans */
-    .top-bar {
-        padding: var(--spacing-4) 0;
-    }
-    
-    .header-main {
-        padding: var(--spacing-8) 0;
-    }
-    
-    .nav__list {
-        gap: var(--spacing-8);
-    }
-    
-    .nav__link {
-        font-size: var(--font-size-lg);
-    }
-}
-
-/* ==========================================================================
-   Responsive pour les hauteurs d'écran
-   ========================================================================== */
-
-/* Écrans courts - réduire les espacements verticaux */
-@media (max-height: 600px) {
-    .top-bar {
-        padding: var(--spacing-1) 0;
-    }
-    
-    .header-main {
-        padding: var(--spacing-3) 0;
-    }
-    
-    /* Laisser les espacements des sections gérés par utilities.css */
-    
-    .hero {
-        min-height: 80vh;
-    }
-}
-
-/* Écrans très courts - layout ultra compact */
-@media (max-height: 480px) {
-    .breadcrumb-mobile {
-        display: none;
-    }
-    
-    .top-bar {
-        display: none;
-    }
-    
-    .header-main {
-        padding: var(--spacing-2) 0;
-    }
-    
-    .logo__text {
-        font-size: var(--font-size-base);
-    }
-    
-    .hero {
-        min-height: 70vh;
-    }
-    
-    .hero h1 {
-        font-size: var(--font-size-3xl);
-    }
-    
-    .hero p {
-        font-size: var(--font-size-lg);
-    }
-}
-
-/* ==========================================================================
-   Responsive pour le menu mobile
-   ========================================================================== */
-
-/* Très petits écrans - menu mobile pleine largeur */
-@media (max-width: 375px) {
-    .mobile-menu {
-        width: 100vw;
-        max-width: none;
-    }
-    
-    .mobile-nav {
-        padding: var(--spacing-4) var(--spacing-3);
-    }
-    
-    .mobile-nav__link {
-        font-size: var(--font-size-base);
-        padding: var(--spacing-3) var(--spacing-2);
-    }
-    
-    .mobile-social__link {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .mobile-social__link .icon {
-        width: 18px;
-        height: 18px;
-    }
-    
-    /* Footer ultra compact pour petits écrans */
-    .site-footer {
-        padding-top: var(--spacing-6);
-        padding-bottom: var(--spacing-4);
-    }
-    
-    .footer-inner {
-        gap: var(--spacing-3);
-    }
-    
-    .footer-brand {
-        margin-bottom: var(--spacing-2);
-    }
-    
-    .footer-logo__text {
-        font-size: var(--font-size-base);
-    }
-    
-    .footer-tagline {
-        font-size: 11px;
-        margin-bottom: var(--spacing-2);
-    }
-    
-    .footer-title {
-        font-size: var(--font-size-sm);
-        margin-bottom: var(--spacing-1);
-    }
-    
-    .footer-nav__link {
-        font-size: 11px;
-        padding: 2px;
-    }
-    
-    .footer-contact__link,
-    .footer-contact__item {
-        font-size: 11px;
-        justify-content: center;
-        text-align: center;
-    }
-    
-    .footer-social__link {
-        width: 32px;
-        height: 32px;
-    }
-    
-    .footer-social__link .icon {
-        width: 14px;
-        height: 14px;
-    }
-    
-    .footer-copyright {
-        font-size: 10px;
-    }
-    
-    .footer-legal__link {
-        font-size: 10px;
-    }
-    
-    .back-to-top {
-        width: 36px;
-        height: 36px;
-    }
-}
-
-/* ==========================================================================
-   Responsive pour l'accessibilité
-   ========================================================================== */
-
-/* Préférence pour un contraste élevé */
-@media (prefers-contrast: high) {
-    .nav__link {
-        border: 1px solid transparent;
-    }
-    
-    .nav__link:hover,
-    .nav__link.active {
-        border-color: var(--primary-color);
-    }
-    
-    .social-link,
-    .language-btn {
-        border: 1px solid var(--gray-300);
-    }
-    
-    .mobile-nav__link {
-        border: 1px solid transparent;
-        border-radius: var(--radius-base);
-    }
-    
-    .mobile-nav__link:hover {
-        border-color: var(--primary-color);
-    }
-}
-
-/* Préférence pour un mouvement réduit */
-@media (prefers-reduced-motion: reduce) {
-    .header {
-        animation: none;
-    }
-    
-    .logo a:hover,
-    .nav__link:hover,
-    .social-link:hover,
-    .contact-item:hover,
-    .mobile-nav__link:hover {
-        transform: none;
-    }
-    
-    .mobile-menu-overlay,
-    .mobile-menu {
-        transition: none;
-    }
-    
-    .hamburger__line {
-        transition: none;
-    }
-}
-
-/* ==========================================================================
-   Print styles
-   ========================================================================== */
-
-@media print {
-    .header {
-        position: static;
-        box-shadow: none;
-    }
-    
-    .top-bar,
-    .breadcrumb-mobile,
-    .menu-toggle,
-    .mobile-menu-overlay {
-        display: none;
-    }
-    
-    .header-main {
-        border-bottom: 2px solid var(--gray-900);
-        padding: var(--spacing-4) 0;
-    }
-    
-    .nav__list {
-        gap: var(--spacing-4);
-    }
-    
-    .nav__link {
-        color: var(--gray-900);
-        text-decoration: underline;
-    }
-    
-    .language-selector {
-        display: none;
-    }
-}
-
-/* ==========================================================================
-   Responsive pour les orientations
-   ========================================================================== */
-
-/* Mode paysage sur mobile */
-@media (orientation: landscape) and (max-height: 480px) {
-    .top-bar {
-        display: none;
-    }
-    
-    .breadcrumb-mobile {
-        display: none;
-    }
-    
-    .header-main {
-        padding: var(--spacing-2) 0;
-    }
-    
-    .hero {
-        min-height: 90vh;
-    }
-    
-    /* Laisser les espacements des sections gérés par utilities.css */
-}
-
-/* ==========================================================================
-   Responsive pour les appareils tactiles
-   ========================================================================== */
-
-/* Augmenter les zones de touch sur mobile */
-@media (pointer: coarse) {
-    .nav__link,
-    .social-link,
-    .contact-item,
-    .language-btn,
-    .menu-toggle {
-        min-height: 44px;
-        min-width: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .mobile-nav__link {
-        min-height: 48px;
-        display: flex;
-        align-items: center;
-    }
-    
-    .mobile-social__link,
-    .mobile-language-btn {
-        min-height: 48px;
-        min-width: 48px;
-    }
-}
-
-/* ==========================================================================
-   Hover states uniquement pour les appareils avec pointeur précis
-   ========================================================================== */
-
-@media (hover: hover) and (pointer: fine) {
-    /* Tous les effets hover sont déjà définis dans components.css */
-    /* Cette media query s'assure qu'ils ne s'appliquent que sur desktop */
-}
-
-/* Désactiver les hovers sur les appareils tactiles */
-@media (hover: none) {
-    .logo a:hover,
-    .nav__link:hover,
-    .social-link:hover,
-    .contact-item:hover,
-    .language-btn:hover,
-    .mobile-nav__link:hover,
-    .mobile-social__link:hover {
-        transform: none;
-        background: inherit;
-        color: inherit;
-    }
-    
-    /* Garder les états actifs pour les éléments interactifs */
-    .nav__link.active,
-    .language-btn.active,
-    .mobile-language-btn.active {
-        transform: none;
+    /* Désactiver les hovers sur les appareils tactiles */
+    @media (hover: none) {
+        .logo a:hover,
+        .nav__link:hover,
+        .social-link:hover,
+        .contact-item:hover,
+        .language-btn:hover,
+        .mobile-nav__link:hover,
+        .mobile-social__link:hover {
+            transform: none;
+            background: inherit;
+            color: inherit;
+        }
+        
+        /* Garder les états actifs pour les éléments interactifs */
+        .nav__link.active,
+        .language-btn.active,
+        .mobile-language-btn.active {
+            transform: none;
+        }
     }
 }

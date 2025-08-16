@@ -1,9 +1,56 @@
 /* AEGEE Toulouse - Layout CSS */
-/* Système de grille et utilitaires de mise en page centralisés */
+@layer tokens, base, layout, components, utilities, overrides;
 
-/* ==========================================================================
-   Grid System Centralisé
-   ========================================================================== */
+@layer layout {
+    /* Système de grille et utilitaires de mise en page centralisés */
+
+    /* ==========================================================================
+       Section Layout Base
+       ========================================================================== */
+
+.section {
+    margin: 0;
+    padding: 0;
+    display: block; /* Flux naturel, pas de flex */
+}
+
+/* Reset des marges du contenu aux bornes de la section */
+.section > .container > :first-child,
+.section > :first-child {
+    margin-top: 0; /* Reset des marges supérieures pour layout propre */
+}
+
+.section > .container > :last-child,
+.section > :last-child {
+    margin-bottom: 0; /* Reset des marges inférieures pour layout propre */
+}
+
+/* Contrôle strict de l'espacement interne des sections */
+.section .section-title {
+    margin: 0 0 var(--spacing-4) 0; /* Marge contrôlée pour les titres */
+}
+
+.section .mt-6 {
+    margin-top: var(--spacing-3); /* Réduction des marges par défaut */
+}
+
+/* Variantes de sections avec espacement */
+.section--padded {
+     /* Desktop par défaut: 48px haut/bas pour un rythme plus compact */
+     padding: var(--spacing-12) 0;
+}
+
+.section--padded-small {
+    padding: var(--spacing-12) 0;
+}
+
+.section--padded-large {
+    padding: var(--spacing-20) 0;
+}
+
+    /* ==========================================================================
+       Grid System Centralisé
+       ========================================================================== */
 
 .grid {
     display: grid;
@@ -26,7 +73,7 @@
 /* Grille texte/média 60/40 */
 .grid--text-media {
     grid-template-columns: 60% 40%;
-    gap: 0;
+    gap: var(--spacing-8); /* Espace entre texte et image */
     align-items: center;
 }
 
@@ -35,12 +82,12 @@
 }
 
 .grid--text-media .text-content {
-    padding-right: var(--spacing-8);
+    padding-right: 0; /* Gap gère l'espacement */
 }
 
 .grid--text-media.grid--reverse .text-content {
     padding-right: 0;
-    padding-left: var(--spacing-8);
+    padding-left: 0; /* Gap gère l'espacement */
 }
 
 /* ==========================================================================
@@ -101,7 +148,7 @@
     /* Masquer l'image/media content sur mobile pour éviter les problèmes de disposition */
     .grid--text-media .media-content,
     .grid--text-media.grid--reverse .media-content {
-        display: none;
+        display: none; /* Masquage mobile - override dans overrides.css si conflit */
     }
     
     .grid--text-media .text-content,
@@ -109,6 +156,19 @@
         padding-right: 0;
         padding-left: 0;
         text-align: center;
+    }
+
+    /* Section responsive dans layout */
+    .section--padded {
+        padding: var(--spacing-8) 0; /* Mobile: 32px haut/bas */
+    }
+
+    .section--padded-small {
+        padding: var(--spacing-6) 0; /* Mobile: 24px haut/bas */
+    }
+
+    .section--padded-large {
+        padding: var(--spacing-12) 0; /* Mobile: 48px haut/bas */
     }
 }
 
@@ -150,4 +210,19 @@
         max-width: var(--container-2xl);
         padding: 0 var(--spacing-14);
     }
+
+    /* Section responsive grandes tailles */
+    .section--padded {
+        padding: var(--spacing-16) 0; /* Desktop XL: 64px haut/bas */
+    }
+
+    .section--padded-small {
+        padding: var(--spacing-14) 0; /* Desktop XL: 56px haut/bas */
+    }
+
+    .section--padded-large {
+        padding: var(--spacing-24) 0; /* Desktop XL: 96px haut/bas */
+    }
+}
+
 }

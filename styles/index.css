@@ -1,0 +1,32 @@
+/* AEGEE Toulouse - Main Entry Point */
+/* Orchestration des CSS Layers et imports */
+
+@layer tokens, base, layout, components, utilities, overrides;
+
+/* ==========================================================================
+   Imports ordonnés selon les CSS Cascade Layers
+   ========================================================================== */
+
+/* 1. Design Tokens */
+@import "tokens.css" layer(tokens);
+
+/* 2. Base Styles (reset, typography) */
+@import "base.css" layer(base);
+
+/* 3. Layout System */
+@import "layout.css" layer(layout);
+
+/* 4. Components (ordre d'importance croissante) */
+@import "components/topbar.css" layer(components);
+@import "components/header.css" layer(components);
+@import "components/hero.css" layer(components);
+@import "components/cards.css" layer(components);
+@import "components/buttons.css" layer(components);
+@import "components/footer.css" layer(components);
+
+/* 5. Utilities (toujours en priorité) */
+@import "utilities.css" layer(utilities);
+@import "responsive.css" layer(utilities);
+
+/* 6. Overrides (uniquement pour les cas exceptionnels) */
+@import "overrides.css" layer(overrides);
