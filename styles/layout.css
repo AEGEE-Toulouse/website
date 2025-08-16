@@ -68,6 +68,7 @@
 
 .grid--partners {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    align-items: stretch;
 }
 
 /* Grille texte/média 60/40 */

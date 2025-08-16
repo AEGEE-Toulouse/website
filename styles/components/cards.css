@@ -108,8 +108,11 @@
        ========================================================================== */
 
     .card--partner {
+        display: flex;
+        flex-direction: column;
         text-align: center;
         padding: var(--spacing-6);
+        height: 100%;
     }
 
     .card--partner .card__logo {
@@ -146,8 +149,13 @@
 
     .card--partner .card__description {
         font-size: var(--font-size-sm);
-        margin: 0;
+        margin: 0 0 var(--spacing-4) 0;
         padding: 0;
+        flex-grow: 1;
+    }
+
+    .card--partner .card__actions {
+        margin-top: auto;
     }
 
     /* ==========================================================================
