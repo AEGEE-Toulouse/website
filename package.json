@@ -4,6 +4,8 @@
   "description": "AEGEE Toulouse - Site web statique avec architecture CSS modulaire",
   "private": true,
   "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve .",
     "build": "postcss styles/index.css -o site.css",
     "watch": "postcss styles/index.css -o site.css --watch",
     "build:verbose": "postcss styles/index.css -o site.css --verbose"

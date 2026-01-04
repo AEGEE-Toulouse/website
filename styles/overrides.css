@@ -31,4 +31,25 @@
             transform: none !important; /* Override hover effects sur touch */
         }
     }
+
+    /* Accessibilité - Skip Link */
+    .skip-link {
+        position: absolute;
+        top: -9999px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary-color);
+        color: var(--white);
+        padding: 1rem 2rem;
+        z-index: 9999;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 0 0 4px 4px;
+        transition: top 0.3s ease;
+    }
+
+    .skip-link:focus {
+        top: 0;
+        outline: 3px solid var(--accent-color);
+    }
 }

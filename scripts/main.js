@@ -193,10 +193,15 @@
      * Définit l'état initial de l'application
      */
     function setInitialState() {
-        // Détecter la langue préférée de l'utilisateur
-        const userLang = navigator.language || navigator.userLanguage;
-        if (userLang.startsWith('en')) {
-            state.currentLanguage = 'en';
+        // Prioriser la langue du document, sinon celle du navigateur
+        const docLang = elements.document.documentElement.lang;
+        if (docLang === 'en' || docLang === 'fr') {
+            state.currentLanguage = docLang;
+        } else {
+            const userLang = navigator.language || navigator.userLanguage;
+            if (userLang && userLang.startsWith('en')) {
+                state.currentLanguage = 'en';
+            }
         }
         
         // Mettre à jour l'interface avec la langue détectée
