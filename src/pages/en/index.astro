@@ -1,0 +1,18 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const bodyPath = path.resolve('./src/content/en-body.html');
+const bodyHtml = fs.readFileSync(bodyPath, 'utf8');
+---
+
+<BaseLayout
+  lang="en"
+  title="AEGEE Toulouse - European Students' Association"
+  description="AEGEE Toulouse - European students association, events, cultural projects, and international exchanges in Toulouse"
+  canonical="https://aegeetoulouse.com/en/"
+  ogUrl="https://aegeetoulouse.com/en/"
+>
+  <Fragment set:html={bodyHtml} />
+</BaseLayout>

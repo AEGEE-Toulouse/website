@@ -4,13 +4,18 @@
   "description": "AEGEE Toulouse - Site web statique avec architecture CSS modulaire",
   "private": true,
   "scripts": {
-    "dev": "npx serve .",
-    "start": "npx serve .",
-    "build": "postcss styles/index.css -o site.css",
-    "watch": "postcss styles/index.css -o site.css --watch",
-    "build:verbose": "postcss styles/index.css -o site.css --verbose"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "preview": "astro preview",
+    "build": "npm run build:all",
+    "build:css": "npx postcss styles/index.css -o public/site.css",
+    "build:astro": "astro build",
+    "build:all": "npm run build:css && npm run build:astro",
+    "watch": "npx postcss styles/index.css -o public/site.css --watch",
+    "build:verbose": "npx postcss styles/index.css -o public/site.css --verbose"
   },
   "devDependencies": {
+    "astro": "^5.2.0",
     "postcss": "^8.4.31",
     "postcss-cli": "^10.1.0",
     "postcss-import": "^15.1.0",
