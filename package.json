@@ -1,5 +1,6 @@
 {
   "name": "aegee-toulouse-website",
+  "packageManager": "npm@10.9.2",
   "version": "1.0.0",
   "description": "AEGEE Toulouse - Site web statique avec architecture CSS modulaire",
   "private": true,
@@ -29,5 +30,8 @@
     "cascade-layers"
   ],
   "author": "AEGEE Toulouse",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": "22.x"
+  }
 }
